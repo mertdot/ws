@@ -1,1 +1,15 @@
-
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/BusinessCard
+    username: postgres
+    password: 8163264
+    driverClassName: org.postgresql.Driver
