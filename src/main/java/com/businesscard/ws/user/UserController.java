@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,8 +20,12 @@ public class UserController {
     //@CrossOrigin //bunu eklememizin sebepi farklı portlardan birbirine istek atılırken cors policy'den geçememesi. Bunu eklediğimizde özel header'lar isteklere ekleniyor ve sorun çözülüyor.
     @PostMapping("users") //Post Requestlerde Çalışacağını Belirttik.
     @ResponseStatus(HttpStatus.CREATED) //Istege bagli
-    public GenericResponse createUser(@RequestBody User user){
+    public ResponseEntity<?> createUser(@RequestBody User user){
+        String username = user.getUsername();
+        if (username == null || username.isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         userService.save(user);
-        return new GenericResponse("user created");
+        return ResponseEntity.ok(new GenericResponse("user created"));
     }
 }
