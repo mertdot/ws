@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Data
+@Data //lombok contructorları getter setteri gibi bir çok methodu otomatik ekliyor.
 @Entity
 @Table(name = "users")
 public class User {
@@ -26,5 +26,9 @@ public class User {
         this.username = username;
         this.displayName = displayName;
         this.password = password;
+    }
+
+    public User() {
+
     }
 }
