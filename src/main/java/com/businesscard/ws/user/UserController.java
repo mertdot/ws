@@ -24,7 +24,6 @@ public class UserController {
     @Autowired //Dependency Injection
     UserService userService;
 
-    //@CrossOrigin //bunu eklememizin sebepi farklı portlardan birbirine istek atılırken cors policy'den geçememesi. Bunu eklediğimizde özel header'lar isteklere ekleniyor ve sorun çözülüyor.
     @PostMapping("users") //Post Requestlerde Çalışacağını Belirttik.
 
     @ResponseStatus(HttpStatus.CREATED) //Istege bagli

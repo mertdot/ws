@@ -30,8 +30,6 @@ public class SecurityConfiguration {
 
     @Autowired /////
     UserAuthService userAuthService;
-    ////
-
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
@@ -44,27 +42,15 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable);
         http.headers(AbstractHttpConfigurer::disable);
 
-        /////
-
-        /*protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(userAuthService);
-        }*/
-
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.httpBasic().authenticationEntryPoint(new AuthEntryPoint());
-
-        /*
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(userAuthService).passwordEncoder(passwordEncoder());
-        }*/
-
 
         return http.build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+            return new BCryptPasswordEncoder();
     }
 }
