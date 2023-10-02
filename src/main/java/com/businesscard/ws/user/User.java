@@ -1,11 +1,4 @@
 package com.businesscard.ws.user;
-
-//import javax.persistence.*;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Pattern;
-//import javax.validation.constraints.Size;
-
-
 import com.businesscard.ws.shared.Views;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -26,7 +19,7 @@ import java.util.Collection;
 
 @Data //lombok contructorları getter setteri gibi bir çok methodu otomatik ekliyor.
 @Entity
-@Table(name = "users") //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+@Table(name = "users")
 @Component //!!!!
 public class User  implements UserDetails {
 
@@ -38,7 +31,6 @@ public class User  implements UserDetails {
     @Size(min = 4, max = 255)
     @UniqueUsername()
     @JsonView(Views.Base.class)
-    //@Column(unique = true)  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private String username;
 
     @NotNull

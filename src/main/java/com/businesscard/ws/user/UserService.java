@@ -11,7 +11,6 @@ public class UserService {
 
     PasswordEncoder passwordEncoder;
 
-    //@Autowired //eğer başka bir constructor olsaydı gerekirdi.
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
